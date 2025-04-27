@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "C++: ビルド",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-std=c++17",
+          "-Wall",
+          "-Wextra",
+          "-O2",
+          "${file}",
+          "-o",
+          "${fileDirname}/${fileBasenameNoExtension}"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "テストケースを取得",
+        "type": "shell",
+        "command": "oj",
+        "args": [
+          "d",
+          "https://atcoder.jp/contests/${input:contestName}/tasks/${input:contestName}_${input:taskName}"
+        ]
+      },
+      {
+        "label": "テストを実行",
+        "type": "shell",
+        "command": "oj",
+        "args": [
+          "t",
+          "-c",
+          "${fileDirname}/${fileBasenameNoExtension}",
+          "-d",
+          "${fileDirname}/test"
+        ],
+        "dependsOn": ["C++: ビルド"]
+      },
+      {
+        "label": "提出",
+        "type": "shell",
+        "command": "acc",
+        "args": ["submit", "${file}"]
+      }
+    ],
+    "inputs": [
+      {
+        "id": "contestName",
+        "description": "コンテスト名を入力してください（例: abc123）",
+        "default": "",
+        "type": "promptString"
+      },
+      {
+        "id": "taskName",
+        "description": "問題名を入力してください（例: a）",
+        "default": "a",
+        "type": "promptString"
+      }
+    ]
+  }
