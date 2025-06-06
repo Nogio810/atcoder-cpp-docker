@@ -39,5 +39,5 @@
     }
   },
   "forwardPorts": [],
-  "postCreateCommand": "echo '🎉 AtCoder開発環境が準備完了！' && echo 'セットアップガイドを表示するには: setup-atcoder.sh' && setup-atcoder.sh"
+  "postCreateCommand": "echo '🎉 AtCoder開発環境が準備完了！' && echo 'セットアップガイドを表示するには: setup-atcoder.sh'"
 }
