@@ -1,35 +1,43 @@
 {
-    "name": "AtCoder Development",
-    "build": {
-      "dockerfile": "Dockerfile",
-      "context": ".."
-    },
-    "remoteUser": "devuser",
-    "workspaceFolder": "/app",
-    "customizations": {
-      "vscode": {
-        "settings": {
-          "terminal.integrated.defaultProfile.linux": "bash",
-          "editor.formatOnSave": true,
-          "editor.tabSize": 4,
-          "files.eol": "\n",
-          "C_Cpp.default.cppStandard": "c++17",
-          "C_Cpp.default.includePath": [
-            "${workspaceFolder}/**"
-          ],
-          "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 4 }"
-        },
-        "extensions": [
-          "ms-vscode.cpptools",
-          "ms-vscode.cmake-tools",
-          "twxs.cmake",
-          "coenraads.bracket-pair-colorizer-2",
-          "streetsidesoftware.code-spell-checker",
-          "eamodio.gitlens",
-          "oderwat.indent-rainbow"
+  "name": "AtCoder Development with aclogin",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "remoteUser": "devuser",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4,
+        "files.eol": "\n",
+        "C_Cpp.default.cppStandard": "c++17",
+        "C_Cpp.default.includePath": [
+          "${workspaceFolder}/**"
+        ],
+        "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 4 }",
+        "C_Cpp.default.compilerPath": "/usr/bin/g++",
+        "C_Cpp.default.compilerArgs": [
+          "-std=c++17",
+          "-Wall",
+          "-Wextra",
+          "-O2"
         ]
-      }
-    },
-    "forwardPorts": [],
-    "postCreateCommand": "echo 'コンテナ作成完了！AtCoder環境の準備ができました。'"
-  }
+      },
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake",
+        "coenraads.bracket-pair-colorizer-2",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "oderwat.indent-rainbow",
+        "formulahendry.code-runner"
+      ]
+    }
+  },
+  "forwardPorts": [],
+  "postCreateCommand": "echo '🎉 AtCoder開発環境が準備完了！' && echo 'セットアップガイドを表示するには: setup-atcoder.sh' && setup-atcoder.sh"
+}
